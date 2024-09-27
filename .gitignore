@@ -1,3 +1,6 @@
+# shell scripts
+*.sh
+
 # .arff databases
 *.arff
 
