@@ -4,8 +4,9 @@
 # shell scripts
 *.sh
 
-# .arff databases
+# Datasets
 *.arff
+*.csv
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
