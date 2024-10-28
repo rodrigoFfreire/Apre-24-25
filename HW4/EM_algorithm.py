@@ -42,7 +42,7 @@ def em(X: np.ndarray, Mu: np.ndarray, Sigma: np.ndarray, Pi: np.ndarray, iterati
     
     for i in range(iterations):
         # E-step
-        P = np.array([normal.pdf(X) * pi for normal, pi in zip(Normal_cur, Pi_cur)])
+        P = np.array([round_if(normal.pdf(X), round) * pi for normal, pi in zip(Normal_cur, Pi_cur)])
         Gamma = round_if(P / np.sum(P.T, axis=1), round)
 
         # M-step
@@ -70,4 +70,4 @@ def em(X: np.ndarray, Mu: np.ndarray, Sigma: np.ndarray, Pi: np.ndarray, iterati
         Normal_cur = np.array([multivariate_normal(mu, sigma, allow_singular=True) for mu, sigma in zip(Mu_cur, Sigma_cur)])
 
 # Runs 2 epochs of the EM algrotithm (round 3 decimal places)
-em(X, Mu, Sigma, Pi, 2)
+em(X, Mu, Sigma, Pi, 2, 3)
