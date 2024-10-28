@@ -30,11 +30,11 @@ def em(X: np.ndarray, Mu: np.ndarray, Sigma: np.ndarray, Pi: np.ndarray, iterati
     Normal_cur = np.array([multivariate_normal(mu, sigma, allow_singular=True) for mu, sigma in zip(Mu_cur, Sigma_cur)])
 
     print(f'> Initial Conditions:')
-    print(f'Mu: {Mu_cur}')
+    print(f'Mu: \n{Mu_cur}')
     print('----------')
-    print(f'Sigma: {Sigma_cur}')
+    print(f'Sigma: \n{Sigma_cur}')
     print('----------')
-    print(f'Pi: {Pi_cur}')
+    print(f'Pi: \n{Pi_cur}')
     print('\n')
 
     if (iterations <= 0):
@@ -55,15 +55,18 @@ def em(X: np.ndarray, Mu: np.ndarray, Sigma: np.ndarray, Pi: np.ndarray, iterati
 
         # Report Iteration
         print(f'> Iteration {i + 1}:')
-        print(f'Mu: {Mu_cur}')
+        print(f'Gaussian Distributions: \n{np.array([round_if(normal.pdf(X), round) for normal in Normal_cur])}')
         print('----------')
-        print(f'Sigma: {Sigma_cur}')
+        print(f'Gamma: \n{Gamma}')
         print('----------')
-        print(f'Pi: {Pi_cur}')
+        print(f'N: \n{N}')
         print('----------')
-        print(f'Gamma: {Gamma}')
+        print(f'Mu: \n{Mu_cur}')
         print('----------')
-        print(f'N: {N}')
+        print(f'Sigma: \n{Sigma_cur}')
+        print('----------')
+        print(f'Pi: \n{Pi_cur}')
+        print('----------')
         print('\n')
 
         # Initialize multivariate normal dist for each cluster for next iteration
